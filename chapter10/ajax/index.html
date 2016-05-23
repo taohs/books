@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+</head>
+<body>
+
+    <script type="text/javascript">
+        var sending = false;
+        $(document).mousemove(function(ev) {
+            //temp1 
+          //  console.log(ev.clientX);
+            $.post('https://www.baidu.com',{x:ev.clientX,y:ev.clientY});
+
+
+            //temp2
+            if (sending) return;
+
+            sending = true;
+            
+            $.post('https://www.baidu.com',{x:ev.clientX,y:ev.clientY},function () {
+                sending = false;
+            });
+
+
+        });
+    </script>
+</body>
+</html>

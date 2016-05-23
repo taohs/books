@@ -1,0 +1,139 @@
+﻿<?xml version="1.0"?>
+  <dpinst>
+    <search>
+      <subDirectory>*</subDirectory>
+    </search>
+
+    <language code="0x0804">
+      <dpinstTitle>【打印机驱动网】驱动安装器</dpinstTitle>
+      <welcomeTitle>开始安装驱动</welcomeTitle>
+      <welcomeIntro>
+安装程序将开始把驱动文件安装到系统，点下一步等待完成即可。	  
+如果有出现安装失败，请到网站上留言给我，感谢支持。
+	  
+～～来自打印机驱动网 www.dyjqd.com～～
+	  </welcomeIntro>
+      <installHeaderTitle>正在安装设备的驱动...</installHeaderTitle>
+      <finishTitle>安装完成。</finishTitle>
+      <finishText>设备驱动成功安装。</finishText>
+    </language>
+    <language code="0x0409">
+	<!--U.S. English-->
+        <dpinstTitle>Driver Install Tools</dpinstTitle>
+    
+        <welcomeTitle>Welcome to the dyjqd Driver Installer!</welcomeTitle>
+        <welcomeIntro>This wizard will walk you through updating the driver.</welcomeIntro>
+    
+        <installHeaderTitle>Installing the driver...</installHeaderTitle>
+
+        <finishTitle>Congratulations! You are finished installing your driver.</finishTitle>
+        <finishText>Finished.</finishText>
+
+    </language>
+    <language code="0x0404">
+	<!--Taiwan-->
+        <dpinstTitle>【打印機驅動網】驅動安裝器</dpinstTitle>
+    
+        <welcomeTitle>開始安裝驅動</welcomeTitle>
+        <welcomeIntro>安裝程序將開始把驅動文件安裝到系統，點下一步等待完成即可。</welcomeIntro>
+    
+        <installHeaderTitle>正在安裝設備的驅動...</installHeaderTitle>
+
+        <finishTitle>安裝完成。</finishTitle>
+        <finishText>設備驅動成功安裝。</finishText>
+
+    </language>
+	<language code="0x0809">
+	<!--U.K. English-->
+        <dpinstTitle>Driver Install Tools</dpinstTitle>
+    
+        <welcomeTitle>Welcome to the dyjqd Driver Installer!</welcomeTitle>
+        <welcomeIntro>This wizard will walk you through updating the driver.</welcomeIntro>
+    
+        <installHeaderTitle>Installing the driver...</installHeaderTitle>
+
+        <finishTitle>Congratulations! You are finished installing your driver.</finishTitle>
+        <finishText>Finished.</finishText>
+
+    </language>
+    <language code="0x0410">
+	<!-- Italian-->
+        <dpinstTitle>Driver Installazione degli strumenti</dpinstTitle>
+        
+        <welcomeTitle>Benvenuti al Driver Installer dyjqd!</welcomeTitle>
+        <welcomeIntro>Questa procedura guidata vi guiderà attraverso l'aggiornamento del driver.</welcomeIntro>
+        
+        <installHeaderTitle>Installazione del driver...</installHeaderTitle>
+        
+        <finishTitle>Congratulazioni. Avete finito di installare il driver.</finishTitle>
+        <finishText>Finito.</finishText>
+    </language>
+	<language code="0x0407">
+		<!--German-->
+        <dpinstTitle>STreiber installieren Werkzeuge</dpinstTitle>
+    
+        <welcomeTitle>Herzlich Willkommen auf der dyjqd Driver Installer!</welcomeTitle>
+        <welcomeIntro>Dieser Assistent führt Sie durch die Aktualisierung der Treiber gehen.</welcomeIntro>
+    
+        <installHeaderTitle>Installation des Treibers...</installHeaderTitle>
+
+        <finishTitle>Glückwunsch! Sie sind fertig Installation der Treiber.</finishTitle>
+        <finishText>Abgeschlossen.</finishText>
+
+    </language>
+	<language code="0x040C">
+	<!--French-->
+        <dpinstTitle>Pilote Installer les outils</dpinstTitle>
+    
+        <welcomeTitle>Bienvenue à l'installation du pilote dyjqd!</welcomeTitle>
+        <welcomeIntro>Cet assistant vous guidera à travers la mise à jour du pilote.</welcomeIntro>
+    
+        <installHeaderTitle>Installation du pilote...</installHeaderTitle>
+
+        <finishTitle>Félicitations ! Vous avez terminé l'installation du pilote.</finishTitle>
+        <finishText>Terminé.</finishText>
+
+    </language>
+	<language code="0x0C0A">
+	<!--Spanish-->
+        <dpinstTitle>Conductor Instalar herramientas</dpinstTitle>
+    
+        <welcomeTitle>Bienvenido al instalador de controladores dyjqd! </welcomeTitle>
+        <welcomeIntro>Este asistente le guiará a través de la actualización del controlador.</welcomeIntro>
+    
+        <installHeaderTitle>Instalación del controlador...</installHeaderTitle>
+
+        <finishTitle>¡Enhorabuena! Haya terminado de instalar el controlador.</finishTitle>
+        <finishText>Terminado.</finishText>
+
+    </language>
+	    <language code="0x0816">
+	<!-- Portuguese-->
+        <dpinstTitle>Motorista Instalar Ferramentas</dpinstTitle>
+        
+        <welcomeTitle>Bem-vindo ao Driver Installer dyjqd! </welcomeTitle>
+        <welcomeIntro>Este assistente irá guiá-lo através de atualização do driver.</welcomeIntro>
+        
+        <installHeaderTitle>Instalar o driver...</installHeaderTitle>
+        
+        <finishTitle>Parabens! Terminar de instalar o driver. </finishTitle>
+        <finishText>Terminado.</finishText>
+    </language>
+	<language code="0x0411">
+	<!--Japanese-->
+        <dpinstTitle>ドライバインストーラ</dpinstTitle>
+    
+        <welcomeTitle>dyjqd ドライバインストーラ！</welcomeTitle>
+        <welcomeIntro>セットアップが完了、次のポイントを待つことができ、システムにドライバファイルのインストールを開始します。</welcomeIntro>
+    
+        <installHeaderTitle>ドライバーが装置を設置している...</installHeaderTitle>
+
+        <finishTitle>インストールは完了です。</finishTitle>
+        <finishText>インストールは完了です。</finishText>
+
+    </language>
+
+    <watermarkPath>Data\watermark.bmp</watermarkPath>
+
+     <forceIfDriverIsNotBetter/>
+</dpinst>

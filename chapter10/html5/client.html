@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <script >
+
+            var ws = new WebSocket("ws://host/path");
+
+            ws.onopen = function () {
+                ws.send('data');
+            }
+
+ws.onclose = function () {
+} 
+ws.ondata = function (ev) {
+    alert(ev.data);
+}
+        </script>
+    </body>
+</html>

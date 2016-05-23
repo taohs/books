@@ -1,0 +1,69 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.15.0
+3 info using node@v4.4.2
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/macbook/Apps/00untitled/10nodejs/00smashing/chapter1/my-project',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/macbook/.npm/my-colors-project/0.0.1/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/macbook/.npm correctMkdir not in flight; initializing
+10 verbose tar pack [ '/Users/macbook/.npm/my-colors-project/0.0.1/package.tgz',
+10 verbose tar pack   '/Users/macbook/Apps/00untitled/10nodejs/00smashing/chapter1/my-project' ]
+11 verbose tarball /Users/macbook/.npm/my-colors-project/0.0.1/package.tgz
+12 verbose folder /Users/macbook/Apps/00untitled/10nodejs/00smashing/chapter1/my-project
+13 info prepublish my-colors-project@0.0.1
+14 verbose addLocalTarball adding from inside cache /Users/macbook/.npm/my-colors-project/0.0.1/package.tgz
+15 verbose correctMkdir /Users/macbook/.npm correctMkdir not in flight; initializing
+16 silly cache afterAdd my-colors-project@0.0.1
+17 verbose afterAdd /Users/macbook/.npm/my-colors-project/0.0.1/package/package.json not in flight; writing
+18 verbose correctMkdir /Users/macbook/.npm correctMkdir not in flight; initializing
+19 verbose afterAdd /Users/macbook/.npm/my-colors-project/0.0.1/package/package.json written
+20 silly publish { name: 'my-colors-project',
+20 silly publish   version: '0.0.1',
+20 silly publish   dependencies: { colors: '0.5.0' },
+20 silly publish   readme: 'ERROR: No README data found!',
+20 silly publish   _id: 'my-colors-project@0.0.1',
+20 silly publish   scripts: {},
+20 silly publish   _shasum: '5dacdf21eb5a80bccb769c36fcecc2b11421abb9',
+20 silly publish   _from: '.' }
+21 verbose getPublishConfig undefined
+22 silly mapToRegistry name my-colors-project
+23 silly mapToRegistry using default registry
+24 silly mapToRegistry registry https://registry.npmjs.org/
+25 silly mapToRegistry data Result {
+25 silly mapToRegistry   raw: 'my-colors-project',
+25 silly mapToRegistry   scope: null,
+25 silly mapToRegistry   name: 'my-colors-project',
+25 silly mapToRegistry   rawSpec: '',
+25 silly mapToRegistry   spec: 'latest',
+25 silly mapToRegistry   type: 'tag' }
+26 silly mapToRegistry uri https://registry.npmjs.org/my-colors-project
+27 verbose publish registryBase https://registry.npmjs.org/
+28 silly publish uploading /Users/macbook/.npm/my-colors-project/0.0.1/package.tgz
+29 verbose stack Error: auth required for publishing
+29 verbose stack     at CachingRegistryClient.publish (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/publish.js:30:14)
+29 verbose stack     at /usr/local/lib/node_modules/npm/lib/publish.js:134:14
+29 verbose stack     at mapToRegistry (/usr/local/lib/node_modules/npm/lib/utils/map-to-registry.js:62:3)
+29 verbose stack     at publish_ (/usr/local/lib/node_modules/npm/lib/publish.js:104:3)
+29 verbose stack     at Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/slide/lib/bind-actor.js:15:8)
+29 verbose stack     at LOOP (/usr/local/lib/node_modules/npm/node_modules/slide/lib/chain.js:15:14)
+29 verbose stack     at LOOP (/usr/local/lib/node_modules/npm/node_modules/slide/lib/chain.js:14:28)
+29 verbose stack     at chain (/usr/local/lib/node_modules/npm/node_modules/slide/lib/chain.js:20:5)
+29 verbose stack     at /usr/local/lib/node_modules/npm/lib/publish.js:73:5
+29 verbose stack     at RES (/usr/local/lib/node_modules/npm/node_modules/inflight/inflight.js:23:14)
+30 verbose cwd /Users/macbook/Apps/00untitled/10nodejs/00smashing/chapter1/my-project
+31 error Darwin 15.4.0
+32 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+33 error node v4.4.2
+34 error npm  v2.15.0
+35 error code ENEEDAUTH
+36 error need auth auth required for publishing
+36 error need auth You need to authorize this machine using `npm adduser`
+37 verbose exit [ 1, true ]

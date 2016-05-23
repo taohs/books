@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>WebSocket echo test</title>
+        <script>
+            var lastMessage ;
+
+            window.onload = function () {
+                //create socket
+                var ws = new WebSocket('ws://localhost:3000');
+                ws.onopen = function () {
+                    ping(); 
+                }
+                ws.onmessage = function (ev) {
+                    console.log(" got: " + ev.data);
+
+                    document.getElementById("latency").innerHTML = new Date -  lastMessage;
+                    ping();
+                }
+
+                function ping() {
+                    //record the timestamp
+                    lastMessage = new Date;
+                    //send the message
+                    ws.send('ping');
+                }
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1>WebSocket Echo</h1>    
+        <h2>Latency: <span id="latency"></span>ws</h2>
+    </body>
+</html>

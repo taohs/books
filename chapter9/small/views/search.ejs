@@ -1,0 +1,13 @@
+<h1>Tweet results for <%= search %></h1>
+<% results.id%>
+<%=results.length%>
+<% if (results.length) { %>
+<ul>
+    <% for (var i = 0; i < results.length; i++) { %>
+<li><%= i%> = <%= results[i]%></li>
+         <li><%= results[i].text %> - <em><%= results[i].from_user  %></em></li> 
+    <% } %>
+</ul>
+<% } else { %>
+<p>No results</p>
+<% } %>

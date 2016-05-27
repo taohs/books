@@ -9,7 +9,7 @@
   regexp:true,    sloppy:true,    vars:false,
   white:true
   */
-/* global $, spa */
+/*global $, spa */
 
 spa.shell = (function () {
   "use strict";

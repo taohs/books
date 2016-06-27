@@ -71,66 +71,77 @@ spa.model = (function () {
     chat = (function () {
         var
             _publish_listchange, _publish_updatechat,
-            _update_list, _leave_chat, 
-            
+            _update_list, _leave_chat,
+
             get_chatee, join_chat, send_msg, set_chatee,
 
             update_avatar,
-            
+
             chatee = null;
 
         // Begin internal methods
-        _update_list = function ( arg_list ) {
-            var i, person_map, make_person_map,
-                people_list = arg_list[ 0 ],
+        _update_list = function (arg_list) {
+            var i, person_map, make_person_map, person,
+                people_list = arg_list[0],
                 is_chatee_online = false;
 
             //clearPeopleDb();
 
             PERSON:
-            for ( i = 0; i < people_list.length; i++ ) {
-                person_map = people_list[ i ];
+                for (i = 0; i < people_list.length; i++) {
+                    person_map = people_list[i];
 
-                if ( ! person_map.name ) { continue PERSON; }
+                    if (!person_map.name) {
+                        continue PERSON;
+                    }
 
-                // if user defined, update css_map and skip remainder
-                if ( stateMap.user && stateMap.user.id === person_map.id ) {
-                    stateMap.user.css_map = person_map.css_map;
-                    continue PERSON;
+                    // if user defined, update css_map and skip remainder
+                    if (stateMap.user && stateMap.user.id === person_map.id) {
+                        stateMap.user.css_map = person_map.css_map;
+                        continue PERSON;
+                    }
+
+                    make_person_map = {
+                        cid: person_map._id,
+                        css_map: person_map.css_map,
+                        id: person_map._id,
+                        name: person_map.name
+                    };
+
+                    person = makePerson( make_person_map );
+
+                    if (chatee && chatee.id === make_person_map.id) {
+                        is_chatee_online = true;
+                        chatee = person;
+                    }
+                    makePerson(make_person_map);
                 }
-
-                make_person_map = {
-                    cid     : person_map._id,
-                    css_map : person_map.css_map,
-                    id      : person_map._id,
-                    name    : person_map.name
-                };
-
-                if ( chatee && chatee.id === make_person_map.id ) {
-                  is_chatee_online = true;
-                }
-                makePerson( make_person_map );
-            }
-            stateMap.people_db.sort( 'name' );
+            stateMap.people_db.sort('name');
             // if chatee is no longer online, we unset the chatee
             // which triggers the 'spa-setchatee' global event
-            if ( chatee && ! is_chatee_online ) { set_chatee(''); }
+            if (chatee && !is_chatee_online) {
+                set_chatee('');
+            }
         };
 
         _publish_listchange = function (arg_list) {
-            _update_list( arg_list );
-            $.gevent.publish( 'spa-listchange', [ arg_list ]);
+            _update_list(arg_list);
+            $.gevent.publish('spa-listchange', [arg_list]);
         };
 
         _publish_updatechat = function (arg_list) {
-            var msg_map = arg_list[ 0 ];
+            var msg_map = arg_list[0];
 
-            if ( ! chatee ) { set_chatee( msg_map.sender_id ); }
-            else if ( msg_map.sender_id !== stateMap.user.id 
-                && msg_map.sender_id !== chatee.id 
-                ) { set_chatee( msg_map.sender_id ); }
+            if (!chatee) {
+                set_chatee(msg_map.sender_id);
+            }
+            else if (msg_map.sender_id !== stateMap.user.id
+                && msg_map.sender_id !== chatee.id
+            ) {
+                set_chatee(msg_map.sender_id);
+            }
 
-            $.gevent.publish( 'spa-updatechat', [msg_map] );
+            $.gevent.publish('spa-updatechat', [msg_map]);
         };
         // End internal methods
 
@@ -138,16 +149,22 @@ spa.model = (function () {
             var sio = isFakeData ? spa.fake.mockSio : spa.data.getSio();
             chatee = null;
             stateMap.is_connected = false;
-            if ( sio ) { sio.emit('leavechat');}
+            if (sio) {
+                sio.emit('leavechat');
+            }
         };
 
-        get_chatee = function () { return chatee; };
+        get_chatee = function () {
+            return chatee;
+        };
         join_chat = function () {
             var sio;
 
-            if ( stateMap.is_connected ) { return false; }
-            if ( stateMap.user.get_is_anon() ){
-                console.log( 'User must be defined before joining chat' );
+            if (stateMap.is_connected) {
+                return false;
+            }
+            if (stateMap.user.get_is_anon()) {
+                console.log('User must be defined before joining chat');
                 return false;
             }
 
@@ -158,49 +175,77 @@ spa.model = (function () {
             return true;
         };
 
-        send_msg = function ( msg_text ) {
-          var msg_map,
-            sio = isFakeData ? spa.fake.mockSio : spa.data.getSio();
+        send_msg = function (msg_text) {
+            var msg_map,
+                sio = isFakeData ? spa.fake.mockSio : spa.data.getSio();
 
-          if ( !sio ) { return false; }
-          if ( ! ( stateMap.user && chatee ) ) { return false; }
+            if (!sio) {
+                return false;
+            }
+            if (!( stateMap.user && chatee )) {
+                return false;
+            }
 
-          msg_map = {
-            dest_id : chatee.id,
-            dest_name : chatee.name,
-            sender_id : stateMap.user.id,
-            msg_text  : msg_text
-          };
-          //we publish updatechat so we can show our outgoing messages
-          _publish_updatechat([ msg_map ]);
-          sio.emit( 'updatechat', msg_map );
-          return true;
-        
+            msg_map = {
+                dest_id: chatee.id,
+                dest_name: chatee.name,
+                sender_id: stateMap.user.id,
+                msg_text: msg_text
+            };
+            //we publish updatechat so we can show our outgoing messages
+            _publish_updatechat([msg_map]);
+            sio.emit('updatechat', msg_map);
+            return true;
+
         };
 
-        set_chatee = function ( person_id ) {
-          var new_chatee;
-          new_chatee = stateMap.people_cid_map[person_id];
-          if ( new_chatee ) {
-            if ( chatee && chatee.id === new_chatee.id ) {
-              return false;
+        set_chatee = function (person_id) {
+            var new_chatee;
+            new_chatee = stateMap.people_cid_map[person_id];
+            if (new_chatee) {
+                if (chatee && chatee.id === new_chatee.id) {
+                    return false;
+                }
+            } else {
+                new_chatee = null;
             }
-          } else {
-            new_chatee = null;
-          }
 
-          $.gevent.publish( 'spa-setchatee', { old_chatee : chatee, new_chatee : new_chatee } );
-          chatee = new_chatee;
-          return true;
-        
+            $.gevent.publish('spa-setchatee', {old_chatee: chatee, new_chatee: new_chatee});
+            chatee = new_chatee;
+            return true;
+
+        };
+
+        /**
+         * avatar_update_map should have the form:
+         * {
+         *  person_id: <string>,
+         *  css_map: {
+         *      top: <int>,
+         *      left: <int>,
+         *      'background-color': <string>
+         *   }
+         *  };
+         *
+         *
+         *
+         *
+         * @param avatar_update_map
+         */
+        update_avatar = function (avatar_update_map) {
+            var sio = isFakeData ? spa.fake.mockSio : spa.data.getSio();
+            if (sio) {
+                sio.emit('updateavatar', avatar_update_map);
+            }
         };
 
         return {
-            _leave  : _leave_chat,
-            get_chatee : get_chatee,
-            send_msg : send_msg,
-            set_chatee : set_chatee,
-            join    : join_chat
+            _leave: _leave_chat,
+            get_chatee: get_chatee,
+            send_msg: send_msg,
+            set_chatee: set_chatee,
+            join: join_chat        ,
+            update_avatar: update_avatar
         }
 
     }());
@@ -301,14 +346,13 @@ spa.model = (function () {
             });
         }
         logout = function () {
-            var is_removed, user = stateMap.user;
+            var user = stateMap.user;                 // 移除is_moved变量
             chat._leave();// 让 people.logout 方法调用 chat._leave()；这样一旦用户完成登出就会自动退出聊天室
             // when we add chat, we should leave the chatroom here
-            is_removed = removePerson(user);
-            stateMap.user = stateMap.anon_user;
 
+            stateMap.user = stateMap.anon_user;
+            clearPeopleDb();// 在登出时清除 Taffy 人员集合
             $.gevent.publish('spa-logout', [user]);
-            return is_removed;
         };
 
         return {
@@ -349,6 +393,6 @@ spa.model = (function () {
     return {
         initModule: initModule,
         people: people,
-        chat : chat
+        chat: chat
     };
 }());

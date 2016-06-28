@@ -24,7 +24,17 @@ spa.chat = (function(){
       + '  </div>'
       + '  <div class="spa-chat-closer">x</div>'
       + '  <div class="spa-chat-sizer">'
-      + '    <div class="spa-chat-msgs"></div>'
+        +   '<div class="spa-chat-list">'
+        +   '   <div class="spa-chat-list-box"></div>'
+        +   '</div>'
+        +   '<div class="spa-chat-msg">'
+        +   '   <div class="spa-chat-msg-log"></div>'
+        +   '   <div class="spa-chat-msg-in">'
+            +   '   <form class="spa-chat-msg-form">'
+            +   '       <input type="text">'
+            +   '       <input type="submit" style="display: none" >'
+            +   '       <div class="spa-chat-msg-send"> send </div>'
+        +   '</div>'
       + '    <div class="spa-chat-box">' 
       + '       <input type="text"/> <div>send</div>  '
       + '    </div>'
@@ -94,7 +104,7 @@ spa.chat = (function(){
       $sizer  : $slider.find( '.spa-chat-sizer' ),
       $msgs   : $slider.find( '.spa-chat-msgs' ),
       $box    : $slider.find( '.spa-chat-box' ),
-      $input  : $slider.find( '.spa-chat-input input[type=text]' ) 
+      $input  : $slider.find( '.spa-chat-input input[type=text]' )
     };
   };
   // End DOM method /setJqueryMap/

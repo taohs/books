@@ -23,7 +23,7 @@ spa.model = (function () {
             user: null,
             is_connected: false
         },
-        isFakeData = true,
+        isFakeData = false,
 
         makeCid, clearPeopleDb, completeLogin, removePerson,
 
